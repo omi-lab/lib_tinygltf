@@ -1359,7 +1359,7 @@ class TinyGLTF {
   ///
   /// Set callbacks to use for filesystem (fs) access and their user data
   ///
-  void SetFsCallbacks(FsCallbacks callbacks);
+  void SetFsCallbacks(const FsCallbacks& callbacks);
 
   ///
   /// Set serializing default values(default = false).
@@ -2540,7 +2540,7 @@ bool WriteImageData(const std::string *basepath, const std::string *filename,
 }
 #endif
 
-void TinyGLTF::SetFsCallbacks(FsCallbacks callbacks) { fs = callbacks; }
+void TinyGLTF::SetFsCallbacks(const FsCallbacks& callbacks) { fs = callbacks; }
 
 #ifdef _WIN32
 static inline std::wstring UTF8ToWchar(const std::string &str) {
