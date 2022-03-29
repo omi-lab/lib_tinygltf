@@ -2023,9 +2023,9 @@ static std::string FindFile(const std::vector<std::string> &paths,
   return std::string();
 }
 
-static std::string GetFilePathExtension(const std::string &FileName) {
-  if (FileName.find_last_of(".") != std::string::npos)
-    return FileName.substr(FileName.find_last_of(".") + 1);
+static std::string GetFilePathExtension(const std::string &Filename) {
+  if (Filename.find_last_of(".") != std::string::npos)
+    return Filename.substr(Filename.find_last_of(".") + 1);
   return "";
 }
 
