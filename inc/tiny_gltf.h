@@ -5520,7 +5520,7 @@ bool TinyGLTF::LoadFromString(Model *model, std::string *err, std::string *warn,
 
   {
     if ((check_sections & REQUIRE_SCENES) &&
-        !IsArrayMemberPresent(v, "scenes")) {
+        !IsArrayMemberPresent(v, "sceneTemplates")) {
       if (err) {
         (*err) += "\"scenes\" object not found in .gltf or not an array type\n";
       }
@@ -5805,7 +5805,7 @@ bool TinyGLTF::LoadFromString(Model *model, std::string *err, std::string *warn,
 
   // 8. Parse scenes.
   {
-    bool success = ForEachInArray(v, "scenes", [&](const json &o) {
+    bool success = ForEachInArray(v, "sceneTemplates", [&](const json &o) {
       if (!IsObject(o)) {
         if (err) {
           (*err) += "`scenes' does not contain an JSON object.";
@@ -7347,7 +7347,7 @@ static void SerializeGltfModel(Model *model, json &o) {
       SerializeGltfScene(model->scenes[i], currentScene);
       JsonPushBack(scenes, std::move(currentScene));
     }
-    JsonAddMember(o, "scenes", std::move(scenes));
+    JsonAddMember(o, "sceneTemplates", std::move(scenes));
   }
 
   // SKINS
